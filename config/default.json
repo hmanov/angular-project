@@ -1,0 +1,5 @@
+{
+  "DB": "mongodb+srv://aaa:aaa@cluster0-mlkam.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "secret",
+  "tokenExpireTime": 36000
+}
