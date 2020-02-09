@@ -1,0 +1,32 @@
+<nav class="navbar">
+  <a type="button" class="branding" routerLink="/">Contact Keeper</a>
+  <a
+    #burger
+    class="toggleBtn"
+    [ngClass]="{ toggleOn: collapse, toggleOff: !collapse }"
+    (click)="toggleNavbarMenu()"
+    href="#"
+  >
+    <div></div>
+    <div></div>
+    <div></div>
+  </a>
+
+  <ul
+    class="nav"
+    [ngClass]="{ 'nav-show': collapse, 'nav-hide': !collapse }"
+    #nav
+  >
+    <li class="nav-item" (click)="toggleNavbarMenu()">
+      <a routerLink="/">Home</a>
+    </li>
+
+    <li class="nav-item" (click)="toggleNavbarMenu()">
+      <a routerLink="/login">Login</a>
+    </li>
+
+    <li class="nav-item" (click)="toggleNavbarMenu()">
+      <a routerLink="/register">Register</a>
+    </li>
+  </ul>
+</nav>
