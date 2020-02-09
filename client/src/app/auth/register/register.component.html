@@ -8,7 +8,9 @@
           class="form-control"
           required
           placeholder="Your Name *"
+          #nameField
           name="name"
+          [ngClass]="nameCheck(nameField)"
           ngModel
         />
       </div>
@@ -46,7 +48,14 @@
       <span> <span style="color: red;">*</span> Required Fileds </span>
 
       <div class="form-group">
-        <button type="submit" class="btn">SIGN UP</button>
+        <button
+          type="submit"
+          [disabled]="isFormValid(form)"
+          [ngClass]="{ disabled: isFormValid(form) }"
+          class="btn"
+        >
+          SIGN UP
+        </button>
       </div>
       <div class="form-group">
         <p>Already have an account ? <a routerLink="/login"> Login here</a></p>
