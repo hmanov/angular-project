@@ -13,6 +13,5 @@ export class NavbarComponent implements OnInit {
 
   toggleNavbarMenu() {
     this.collapse = !this.collapse;
-    console.log(this.collapse);
   }
 }

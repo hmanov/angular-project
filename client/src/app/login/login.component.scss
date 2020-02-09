@@ -37,8 +37,7 @@ $lighter-color: #e1e2e2;
     }
   }
   p {
-    padding: 20px;
-    margin: 20px;
+    padding: 10px;
     width: 100%;
   }
   button {
@@ -69,4 +68,40 @@ $lighter-color: #e1e2e2;
   font-weight: 700;
   background-color: $primary-color;
   color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .form {
+    width: 90%;
+    input,
+    label {
+      padding: 5px;
+      margin: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid $secondary-color;
+      &:focus {
+        border-radius: 0;
+        border: 1px solid green;
+      }
+    }
+    button {
+      padding: 10px;
+      margin: 10px 10px 20px 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid $secondary-color;
+      font-size: 15px;
+    }
+    p {
+      padding: 10px;
+      margin: 10px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 1rem;
+    }
+    a {
+    }
+  }
 }
