@@ -13,12 +13,12 @@ $lighter-color: #e1e2e2;
   background-size: cover;
 }
 .form {
+  display: flex;
+  flex-direction: column;
   font-family: 'Roboto Mono', monospace;
   width: 40%;
   background-color: rgba($lighter-color, 0.5);
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;

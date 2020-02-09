@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-register',
@@ -7,11 +8,26 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private cookieService: CookieService
+  ) {}
 
   ngOnInit() {}
-  register(data: NgForm) {
+  register(data) {
     console.log(data);
+    this.authService.register(data).subscribe(
+      res => {
+        console.log(res);
+        this.cookieService.set('name', res['token']);
+        const user = this.authService.getUser().subscribe(res => {
+          console.log(res);
+        });
+      },
+      err => {
+        console.log(err.error);
+      }
+    );
   }
   nameCheck(field) {
     const classes = {
@@ -23,7 +39,7 @@ export class RegisterComponent implements OnInit {
   isFormValid(form) {
     const { name, email, password, repeatPassword } = form.value;
     if (name && email && password && repeatPassword) {
-      return false;
+      return true;
     }
     return true;
   }

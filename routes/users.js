@@ -31,7 +31,7 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (user) {
-        return res.status(400).json({ msg: 'user already exists' });
+        return res.status(400).send('A user with this email is already exists');
       }
       //hashing the password
       const hashedPasword = await bcrypt.hash(password, 10);
