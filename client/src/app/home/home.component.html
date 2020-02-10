@@ -6,8 +6,23 @@
   <hr />
 
   <p>
-    <button type="button" class="btn-lg" routerLink="/register" role="button">
+    <button
+      *ngIf="!user"
+      type="button"
+      class="btn-lg"
+      routerLink="/register"
+      role="button"
+    >
       Try NOW
+    </button>
+    <button
+      *ngIf="user"
+      type="button"
+      class="btn-lg"
+      routerLink="/"
+      role="button"
+    >
+      Create Contact
     </button>
   </p>
 </div>

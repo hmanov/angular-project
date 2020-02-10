@@ -10,7 +10,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +22,22 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     RegisterComponent,
     LoginComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule,
+
+    ToastrModule.forRoot({
+      closeButton: false,
+      newestOnTop: false,
+      progressBar: false,
+      positionClass: 'toast-top-center',
+      preventDuplicates: false
+    })
+  ],
   providers: [CookieService, JwtHelperService],
   bootstrap: [AppComponent]
 })

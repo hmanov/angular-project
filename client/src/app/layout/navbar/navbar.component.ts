@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
-import {} from 'protractor';
+
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,10 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, DoCheck {
-  constructor(private cookieService: CookieService) {}
+  constructor(
+    private cookieService: CookieService,
+    private toastr: ToastrService
+  ) {}
   @Input() collapse: boolean = false;
   user: any;
   ngOnInit() {}
@@ -23,6 +27,7 @@ export class NavbarComponent implements OnInit, DoCheck {
   }
   logout() {
     this.cookieService.delete('keeperUser');
-    this.cookieService.delete('keepertoken');
+    this.cookieService.delete('keeperToken');
+    this.toastr.success(`You have logged out successfully`);
   }
 }

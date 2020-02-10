@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { CookieService } from 'ngx-cookie-service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
         });
       },
       err => {
-        console.log(err.error);
+        console.log(err);
       }
     );
   }
