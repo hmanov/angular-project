@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,18 +11,19 @@ import { CookieService } from 'ngx-cookie-service';
 export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private router: Router
   ) {}
 
   ngOnInit() {}
   register(data) {
-    console.log(data);
     this.authService.register(data).subscribe(
       res => {
-        console.log(res);
-        this.cookieService.set('name', res['token']);
-        const user = this.authService.getUser().subscribe(res => {
-          console.log(res);
+        this.cookieService.set('keeperToken', res['token']);
+        let user = {};
+        this.authService.getUser().subscribe(res => {
+          this.cookieService.set('keeperUser', JSON.stringify(res));
+          this.router.navigateByUrl('/');
         });
       },
       err => {

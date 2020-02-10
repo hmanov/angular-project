@@ -17,10 +17,14 @@ export class AuthService {
   }
 
   getUser() {
-    const token = this.cookie.get('name');
+    const token = this.cookie.get('keeperToken');
 
     return this.http.get('http://localhost:3000/api/auth', {
       headers: { 'x-auth-token': token }
     });
+  }
+  login(userData) {
+    console.log(userData);
+    return this.http.post('http://localhost:3000/api/auth', userData);
   }
 }

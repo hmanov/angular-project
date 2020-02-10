@@ -1,13 +1,15 @@
 <div class="form">
   <div class="container">
     <h1>LOGIN</h1>
-    <form>
+    <form #form="ngForm" (ngSubmit)="login(form.value)">
       <div class="form-group">
         <input
           type="text"
           class="form-control"
           required
-          placeholder="Your Name *"
+          placeholder="Your Email *"
+          name="email"
+          ngModel
         />
       </div>
 
@@ -17,6 +19,8 @@
           class="form-control"
           required
           placeholder=" Your Pasword *"
+          name="password"
+          ngModel
         />
       </div>
 

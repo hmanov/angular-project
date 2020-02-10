@@ -17,16 +17,28 @@
     [ngClass]="{ 'nav-show': collapse, 'nav-hide': !collapse }"
     #nav
   >
+    <li *ngIf="user">
+      <a>Hello {{ user.name }}!</a>
+    </li>
     <li class="nav-item" (click)="toggleNavbarMenu()">
       <a routerLink="/">Home</a>
     </li>
 
-    <li class="nav-item" (click)="toggleNavbarMenu()">
+    <li *ngIf="!user" class="nav-item" (click)="toggleNavbarMenu()">
       <a routerLink="/login">Login</a>
     </li>
 
-    <li class="nav-item" (click)="toggleNavbarMenu()">
+    <li *ngIf="!user" class="nav-item" (click)="toggleNavbarMenu()">
       <a routerLink="/register">Register</a>
+    </li>
+
+    <li
+      *ngIf="user"
+      class="nav-item"
+      (click)="toggleNavbarMenu()"
+      (click)="logout()"
+    >
+      <a routerLink="/">Logout</a>
     </li>
   </ul>
 </nav>
