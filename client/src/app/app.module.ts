@@ -12,8 +12,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,13 +29,13 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     CommonModule,
     BrowserAnimationsModule,
-
     ToastrModule.forRoot({
       closeButton: false,
       newestOnTop: false,
       progressBar: false,
       positionClass: 'toast-top-center',
-      preventDuplicates: false
+      preventDuplicates: true,
+      timeOut: 3000
     })
   ],
   providers: [CookieService, JwtHelperService],

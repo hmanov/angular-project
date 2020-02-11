@@ -1,0 +1,62 @@
+<div class="form">
+  <div class="container">
+    <h1>CREATE CONTACT</h1>
+    <form #form="ngForm" (ngSubmit)="register(form.value)">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          required
+          placeholder="Contact Name *"
+          #nameField
+          name="name"
+          ngModel
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          required
+          placeholder="Contact Email *"
+          name="email"
+          ngModel
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          required
+          placeholder=" Your Pasword *"
+          name="password"
+          ngModel
+        />
+      </div>
+      <div class="form-group">
+        <select
+          type="select"
+          class="form-control"
+          required
+          placeholder="Repeat Your Password *"
+          name="repeatPassword"
+          ngModel
+        >
+          <option value="professional">Professional</option>
+          <option selected value="Private">Private</option>
+        </select>
+      </div>
+      <span> <span style="color: red;">*</span> Required Fileds </span>
+
+      <div class="form-group">
+        <button type="submit" class="btn">
+          SIGN UP
+        </button>
+      </div>
+      <div class="form-group">
+        <p>Already have an account ? <a routerLink="/login"> Login here</a></p>
+      </div>
+    </form>
+  </div>
+</div>
