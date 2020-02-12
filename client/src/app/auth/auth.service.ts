@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { RegisterUserData } from './User';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie-service';
-const jwt = new JwtHelperService();
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +23,6 @@ export class AuthService {
     });
   }
   login(userData) {
-    console.log(userData);
     return this.http.post('http://localhost:3000/api/auth', userData);
   }
 }

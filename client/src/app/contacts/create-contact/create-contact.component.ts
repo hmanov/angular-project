@@ -9,5 +9,7 @@ export class CreateContactComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-  register(data) {}
+  register(data) {
+    console.log(data);
+  }
 }

@@ -18,7 +18,7 @@
     #nav
   >
     <li class="nav-item" *ngIf="user" (click)="toggleNavbarMenu()">
-      <a>Hello {{ user.name }}!</a>
+      <a>Hello, {{ user.name }}!</a>
     </li>
     <li class="nav-item" *ngIf="user" (click)="toggleNavbarMenu()">
       <a routerLink="/contacts">My Contacts</a>

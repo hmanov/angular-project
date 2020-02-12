@@ -117,3 +117,11 @@ $lighter-color: #e1e2e2;
 .disabled:disabled {
   background-color: #dddddd;
 }
+/* style the items (options), including the selected item: */
+.box {
+  position: relative;
+}
+.box select {
+  padding: 20px;
+  width: 200px;
+}
