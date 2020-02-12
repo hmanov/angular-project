@@ -37,8 +37,10 @@ $lighter-color: #e1e2e2;
 }
 .btn-lg {
   display: block;
-  height: 40px;
-  width: 100px;
+  margin-left: auto;
+  height: 80px;
+  width: 160px;
+  font-size: 1.4rem;
   border-radius: 5px;
   background-color: $primary-color;
   color: $lighter-color;
