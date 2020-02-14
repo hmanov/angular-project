@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  ElementRef,
-  OnChanges,
-  ChangeDetectorRef,
-  DoCheck
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContactsService } from '../contacts.service';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -17,10 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent implements OnInit {
-  constructor(
-    private contactsService: ContactsService,
-    private cd: ChangeDetectorRef
-  ) {}
+  constructor(private contactsService: ContactsService) {}
   contacts;
   ngOnInit() {
     this.contactsService.getAllContacts().subscribe(res => {
