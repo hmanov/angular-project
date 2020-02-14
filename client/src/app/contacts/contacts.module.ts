@@ -14,7 +14,6 @@ const contactsRoutes: Routes = [
     children: [
       {
         path: '',
-        pathMatch: 'full',
         component: ContactsComponent
       },
       { path: 'create', component: CreateContactComponent },

@@ -1,7 +1,14 @@
-import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  DoCheck,
+  ViewContainerRef
+} from '@angular/core';
 
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +18,8 @@ import { ToastrService } from 'ngx-toastr';
 export class NavbarComponent implements OnInit, DoCheck {
   constructor(
     private cookieService: CookieService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
   @Input() collapse: boolean = false;
   user: any;
@@ -29,5 +37,6 @@ export class NavbarComponent implements OnInit, DoCheck {
     this.cookieService.delete('keeperUser');
     this.cookieService.delete('keeperToken');
     this.toastr.success(`You have logged out successfully`);
+    this.router.navigateByUrl('/');
   }
 }

@@ -1,4 +1,12 @@
-<div class="container">
-  <button class="create" routerLink="/createContact">Create Contact</button>
-  <app-contact></app-contact>
+<div class="wrapper">
+  <button class="create" routerLink="/contacts/create">
+    Create Contact
+  </button>
+  <div class="container">
+    <app-contact
+      class=".clt"
+      *ngFor="let contact of contacts"
+      [contact]="contact"
+    ></app-contact>
+  </div>
 </div>
