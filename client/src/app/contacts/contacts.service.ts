@@ -14,8 +14,8 @@ export class ContactsService {
       headers: { 'x-auth-token': this.token }
     });
   }
-  getAllContacts() {
-    return this.http.get('http://localhost:3000/api/contacts', {
+  getAllContacts(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:3000/api/contacts', {
       headers: { 'x-auth-token': this.token }
     });
   }

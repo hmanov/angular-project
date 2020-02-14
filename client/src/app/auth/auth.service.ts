@@ -23,4 +23,11 @@ export class AuthService {
   login(userData) {
     return this.http.post('http://localhost:3000/api/auth', userData);
   }
+  logout() {
+    this.cookie.delete('keeperUser');
+    this.cookie.delete('keeperToken');
+    return null;
+    //this.toastr.success(`You have logged out successfully`);
+    // this.router.navigateByUrl('/');
+  }
 }
