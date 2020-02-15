@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, Input } from '@angular/core';
 import { ContactsService } from '../contacts.service';
 
 @Component({
@@ -9,7 +9,14 @@ import { ContactsService } from '../contacts.service';
 export class ContactsComponent implements OnInit {
   constructor(private contactsService: ContactsService) {}
 
-  contacts = this.contactsService.getAllContacts();
+  contacts;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.contactsService.getAllContacts().subscribe(e => {
+      this.contacts = e;
+    });
+  }
+  del(contact) {
+    this.contacts = this.contacts.filter(e => e !== contact);
+  }
 }

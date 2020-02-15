@@ -10,9 +10,10 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SpinnerComponent } from './layout/spinner/spinner.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent],
+  declarations: [AppComponent, NavbarComponent, HomeComponent, SpinnerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -8,6 +8,7 @@ import { ContactsService } from '../contacts.service';
 })
 export class DetailsComponent implements OnInit {
   id: string;
+  contactDetails;
   constructor(
     private route: ActivatedRoute,
     private contactsService: ContactsService
@@ -18,7 +19,8 @@ export class DetailsComponent implements OnInit {
       params => {
         this.id = params.get('id');
         this.contactsService.contactDetails(this.id).subscribe(res => {
-          console.log(res);
+          this.contactDetails = res;
+          console.log(this.contactDetails);
         });
       },
       err => {

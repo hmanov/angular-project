@@ -23,6 +23,7 @@ export class CreateContactComponent implements OnInit {
       },
       err => {
         console.log(err);
+        console.log(err);
         this.toastr.error(`You must be signed in to create contacts`);
       },
       () => {

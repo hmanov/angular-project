@@ -1,1 +1,7 @@
-<p>details works!</p>
+<div class="container" *ngIf="contactDetails">
+  <p>{{ contactDetails.name }}</p>
+  <p>{{ contactDetails._id }}</p>
+  <p>{{ contactDetails.email }}</p>
+  <p>{{ contactDetails.type }}</p>
+  <p>{{ contactDetails.date | date: 'dd/MM/yyyy hh:mm:ss' }}</p>
+</div>

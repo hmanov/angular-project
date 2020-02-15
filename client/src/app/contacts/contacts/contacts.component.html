@@ -1,12 +1,17 @@
 <div class="wrapper">
+  <div class="modal">
+    <div class="frame"></div>
+  </div>
   <button class="create" routerLink="/contacts/create">
     Create Contact
   </button>
   <div class="contactWrapper">
     <app-contact
+      #id
       class="container"
       [contact]="contact"
-      *ngFor="let contact of contacts | async"
+      (deleted)="del(contact)"
+      *ngFor="let contact of contacts"
     ></app-contact>
   </div>
 </div>

@@ -26,4 +26,8 @@ export class ContactsService {
   contactDetails(id: string) {
     return this.http.get(`${url}/${id}`, this.getCredentials());
   }
+
+  deleteContact(id: string) {
+    return this.http.delete(`${url}/${id}`, this.getCredentials());
+  }
 }

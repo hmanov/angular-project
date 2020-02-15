@@ -4,6 +4,7 @@
     <form #form="ngForm" (ngSubmit)="login(form.value)">
       <div class="form-group">
         <input
+          #emailField="ngModel"
           type="text"
           class="form-control"
           required

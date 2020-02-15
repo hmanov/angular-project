@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ContactsService } from '../contacts.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -7,7 +10,27 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
   @Input() contact;
-  constructor() {}
+  @Output() deleted: EventEmitter<any> = new EventEmitter();
+  constructor(
+    private contactsService: ContactsService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
+  deleteContact(id: string) {
+    if (confirm('Are you sure to delete this contact')) {
+      this.contactsService.deleteContact(id).subscribe(
+        res => {},
+        err => {
+          this.toastr.error(err.error.msg);
+        },
+        () => {
+          this.toastr.success(`Contact deleted successfully!`);
+          this.router.navigateByUrl('/contacts');
+          this.deleted.emit(this.contact._id);
+        }
+      );
+    }
+  }
 }
