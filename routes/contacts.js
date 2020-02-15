@@ -96,6 +96,23 @@ router.put(
     }
   }
 );
+//  @route      GET api/contacts/:id
+//  @desc       GET single contact
+//  @access     Private
+router.get('/:id', [auth], async (req, res) => {
+  try {
+    let contact = await Contact.findById(req.params.id);
+    if (!contact) return res.status(404).json({ msg: 'Contact not found' });
+
+    if (contact.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Not authorized' });
+    }
+
+    res.json(contact);
+  } catch (error) {
+    serverError(error, res);
+  }
+});
 
 //  @route      DEL api/contacts
 //  @desc       delete contact

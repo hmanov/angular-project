@@ -17,7 +17,7 @@ const contactsRoutes: Routes = [
         component: ContactsComponent
       },
       { path: 'create', component: CreateContactComponent },
-      { path: 'details', component: DetailsComponent }
+      { path: 'details/:id', component: DetailsComponent }
     ]
   }
 ];

@@ -3,23 +3,27 @@ import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
+const url = 'http://localhost:3000/api/contacts';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
   constructor(private http: HttpClient, private cookie: CookieService) {}
-  token;
-  createContact(data): Observable<any> {
-    const token = this.cookie.get('keeperToken');
-    return this.http.post<any>('http://localhost:3000/api/contacts', data, {
-      headers: { 'x-auth-token': token }
-    });
+
+  private getCredentials = () => {
+    return { headers: { 'x-auth-token': this.cookie.get('keeperToken') } };
+  };
+
+  createContact(data: any) {
+    return this.http.post(url, data, this.getCredentials());
   }
-  getAllContacts(): Observable<any[]> {
-    const token = this.cookie.get('keeperToken');
-    this.cookie.get('keeperToken');
-    return this.http.get<any[]>('http://localhost:3000/api/contacts', {
-      headers: { 'x-auth-token': token }
-    });
+
+  getAllContacts() {
+    return this.http.get(url, this.getCredentials());
+  }
+
+  contactDetails(id: string) {
+    return this.http.get(`${url}/${id}`, this.getCredentials());
   }
 }
