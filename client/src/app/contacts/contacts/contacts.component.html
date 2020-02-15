@@ -6,7 +6,7 @@
     <app-contact
       [contact]="contact"
       class=".clt"
-      *ngFor="let contact of contacts"
+      *ngFor="let contact of contacts | async"
     ></app-contact>
   </div>
 </div>

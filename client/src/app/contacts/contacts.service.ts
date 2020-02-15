@@ -8,15 +8,18 @@ import { Observable } from 'rxjs';
 })
 export class ContactsService {
   constructor(private http: HttpClient, private cookie: CookieService) {}
-  token = this.cookie.get('keeperToken');
+  token;
   createContact(data): Observable<any> {
+    const token = this.cookie.get('keeperToken');
     return this.http.post<any>('http://localhost:3000/api/contacts', data, {
-      headers: { 'x-auth-token': this.token }
+      headers: { 'x-auth-token': token }
     });
   }
   getAllContacts(): Observable<any[]> {
+    const token = this.cookie.get('keeperToken');
+    this.cookie.get('keeperToken');
     return this.http.get<any[]>('http://localhost:3000/api/contacts', {
-      headers: { 'x-auth-token': this.token }
+      headers: { 'x-auth-token': token }
     });
   }
 }
