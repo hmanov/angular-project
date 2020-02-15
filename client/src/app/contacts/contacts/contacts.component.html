@@ -2,10 +2,10 @@
   <button class="create" routerLink="/contacts/create">
     Create Contact
   </button>
-  <div class="container ">
+  <div class="contactWrapper">
     <app-contact
+      class="container"
       [contact]="contact"
-      class=".clt"
       *ngFor="let contact of contacts | async"
     ></app-contact>
   </div>
