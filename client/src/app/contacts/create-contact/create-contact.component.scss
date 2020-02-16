@@ -13,6 +13,7 @@ $lighter-color: #e1e2e2;
   background-attachment: fixed;
   background-size: cover;
 }
+
 .form {
   font-family: 'Roboto Mono', monospace;
   width: 40%;
@@ -25,8 +26,8 @@ $lighter-color: #e1e2e2;
   text-align: center;
   margin: 100px auto;
   box-sizing: border-box;
+
   input,
-  label,
   select {
     padding: 20px;
     margin: 20px;
@@ -37,6 +38,17 @@ $lighter-color: #e1e2e2;
       border-radius: 0;
       outline: none;
     }
+  }
+
+  label {
+    padding: 0;
+  }
+
+  input[type='radio'] {
+    width: 8%;
+
+    margin: 20px 5px;
+    transform: scale(2);
   }
   p {
     padding: 10px;
@@ -64,6 +76,12 @@ $lighter-color: #e1e2e2;
 .form-group {
   display: flex;
   width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  select > option {
+    padding-top: 20px;
+  }
 }
 .btn {
   font-size: 20px;
@@ -75,7 +93,6 @@ $lighter-color: #e1e2e2;
   .form {
     width: 90%;
     input,
-    label,
     select {
       padding: 5px;
       margin: 10px;

@@ -8,7 +8,6 @@ import { ContactsService } from 'src/app/contacts/contacts.service';
 const expiresIn = () => {
   const expires = new Date(Date.now());
   expires.setHours(expires.getHours() + 1);
-  console.log(expires);
   return expires;
 };
 @Component({

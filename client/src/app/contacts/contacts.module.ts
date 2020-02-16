@@ -6,7 +6,7 @@ import { CreateContactComponent } from './create-contact/create-contact.componen
 import { ContactsService } from './contacts.service';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './details/details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const contactsRoutes: Routes = [
   {
     path: '',
@@ -28,7 +28,12 @@ const contactsRoutes: Routes = [
     CreateContactComponent,
     DetailsComponent
   ],
-  imports: [CommonModule, RouterModule.forChild(contactsRoutes), FormsModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(contactsRoutes),
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [ContactsService],
   exports: [RouterModule]
 })

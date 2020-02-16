@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
-
+import { Observable, from } from 'rxjs';
+import { Contact } from './Contact';
 const url = 'http://localhost:3000/api/contacts';
 
 @Injectable({
@@ -23,8 +23,8 @@ export class ContactsService {
     return this.http.get(url, this.getCredentials());
   }
 
-  contactDetails(id: string) {
-    return this.http.get(`${url}/${id}`, this.getCredentials());
+  contactDetails(id: string): Observable<Contact> {
+    return this.http.get<Contact>(`${url}/${id}`, this.getCredentials());
   }
 
   deleteContact(id: string) {
