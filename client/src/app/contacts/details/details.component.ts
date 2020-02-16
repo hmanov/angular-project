@@ -1,7 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContactsService } from '../contacts.service';
-import { FormControl, FormGroup, FormControlName } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormControlName,
+  Validators
+} from '@angular/forms';
 import { Contact } from '../Contact';
 @Component({
   selector: 'app-details',
@@ -9,7 +14,6 @@ import { Contact } from '../Contact';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  id: string;
   contactDetails: Contact;
 
   form: FormGroup;
@@ -21,17 +25,18 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(
       params => {
-        this.id = params.get('id');
-        this.contactsService.contactDetails(this.id).subscribe(res => {
+        const id = params.get('id');
+
+        this.contactsService.contactDetails(id).subscribe(res => {
           this.contactDetails = res;
           const { name, email, phone, type, date } = this.contactDetails;
 
           this.form = new FormGroup({
-            name: new FormControl(name),
-            email: new FormControl(email),
-            phone: new FormControl(phone),
-            type: new FormControl(type),
-            date: new FormControl(date)
+            name: new FormControl({ value: name, disabled: true }),
+            email: new FormControl({ value: email, disabled: true }),
+            phone: new FormControl({ value: phone, disabled: true }),
+            type: new FormControl({ value: type, disabled: true }),
+            date: new FormControl({ value: date, disabled: true })
           });
           console.log(this.contactDetails);
         });
@@ -44,6 +49,6 @@ export class DetailsComponent implements OnInit {
   }
 
   log(): void {
-    console.log(this.form);
+    const { name, email, phone, type, date } = this.contactDetails;
   }
 }
