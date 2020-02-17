@@ -27,7 +27,7 @@ export class AuthService {
     this.cookie.delete('keeperUser');
     this.cookie.delete('keeperToken');
     return null;
-    //this.toastr.success(`You have logged out successfully`);
+    // this.toastr.success(`You have logged out successfully`);
     // this.router.navigateByUrl('/');
   }
 }
