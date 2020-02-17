@@ -7,6 +7,9 @@ import { ContactsService } from './contacts.service';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './details/details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ContactsInterceptor } from './contacts.interceptor';
+
 const contactsRoutes: Routes = [
   {
     path: '',
@@ -22,19 +25,22 @@ const contactsRoutes: Routes = [
   }
 ];
 @NgModule({
-  declarations: [
-    ContactsComponent,
-    ContactComponent,
-    CreateContactComponent,
-    DetailsComponent
-  ],
+  declarations: [ContactsComponent, ContactComponent, CreateContactComponent, DetailsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(contactsRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [ContactsService],
+  providers: [
+    ContactsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ContactsInterceptor,
+      multi: true
+    }
+  ],
   exports: [RouterModule]
 })
 export class ContactsModule {}

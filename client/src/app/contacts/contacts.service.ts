@@ -11,23 +11,19 @@ const url = 'http://localhost:3000/api/contacts';
 export class ContactsService {
   constructor(private http: HttpClient, private cookie: CookieService) {}
 
-  private getCredentials = () => {
-    return { headers: { 'x-auth-token': this.cookie.get('keeperToken') } };
-  };
-
   createContact(data: any) {
-    return this.http.post(url, data, this.getCredentials());
+    return this.http.post(url, data);
   }
 
   getAllContacts() {
-    return this.http.get(url, this.getCredentials());
+    return this.http.get(url);
   }
 
   contactDetails(id: string): Observable<Contact> {
-    return this.http.get<Contact>(`${url}/${id}`, this.getCredentials());
+    return this.http.get<Contact>(`${url}/${id}`);
   }
 
   deleteContact(id: string) {
-    return this.http.delete(`${url}/${id}`, this.getCredentials());
+    return this.http.delete(`${url}/${id}`);
   }
 }
