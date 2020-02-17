@@ -1,43 +1,21 @@
-<div>
-  <div class="container" *ngIf="contactDetails">
-    <form [formGroup]="form" (ngSubmit)="log()">
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          value="{{ contactDetails.name }}"
-          formControlName="name"
-        />
-      </div>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          value="{{ contactDetails.email }}"
-          formControlName="email"
-        />
-      </div>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          value="{{ contactDetails.type }}"
-          formControlName="type"
-        />
-      </div>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          value="{{ contactDetails.date | date: 'dd-MMM-yyyy hh:mm:ss' }}"
-          formControlName="date"
-        />
-      </div>
-      <div class="form-group">
-        <button type="submit">edit</button>
-      </div>
-    </form>
-  </div>
+<div class="container" *ngIf="contactDetails">
+  <form [formGroup]="form" (ngSubmit)="log()">
+    <div class="form-group">
+      <input type="text" class="form-control" value="" formControlName="name" />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" value="" formControlName="email" />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" value="" formControlName="type" />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" value="" formControlName="date" />
+    </div>
+    <div class="form-group">
+      <button type="submit">edit</button>
+    </div>
+  </form>
 </div>
 
 <!-- formControlName="d" -->
