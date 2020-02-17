@@ -1,6 +1,6 @@
 <div class="container" *ngIf="contactDetails">
   <h1>EDIT YOUR CONTACT</h1>
-  <form [formGroup]="form" (ngSubmit)="log()">
+  <form [formGroup]="form" (ngSubmit)="editContact()">
     <div class="form-group">
       <input type="text" class="form-control" value="" formControlName="name" />
     </div>
@@ -19,7 +19,7 @@
           {{ edit }}
         </button>
 
-        <button type="submit" class="delete">Delete</button>
+        <button type="button" class="delete" (click)="delete()">Delete</button>
       </div>
     </div>
   </form>

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from '../contacts.service';
 import { FormControl, FormGroup, FormControlName, Validators } from '@angular/forms';
 import { Contact } from '../Contact';
-import { formatDate, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -18,7 +18,8 @@ export class DetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private contactsService: ContactsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
   edit: string = 'Save';
   id: string;
@@ -52,7 +53,7 @@ export class DetailsComponent implements OnInit {
     );
   }
 
-  log(): void {
+  editContact(): void {
     this.contactsService.editContact(this.id, this.form.value).subscribe(
       res => {},
       err => {},
@@ -60,5 +61,19 @@ export class DetailsComponent implements OnInit {
         this.toastr.success('Contact edited Successfully!');
       }
     );
+  }
+  delete() {
+    if (confirm('Are you sure to delete this contact')) {
+      this.contactsService.deleteContact(this.id).subscribe(
+        res => {},
+        err => {
+          this.toastr.error(err.error);
+        },
+        () => {
+          this.toastr.success('Contact deleted successfully!');
+          this.router.navigateByUrl('/contacts');
+        }
+      );
+    }
   }
 }
