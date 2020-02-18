@@ -56,9 +56,12 @@ export class DetailsComponent implements OnInit {
   editContact(): void {
     this.contactsService.editContact(this.id, this.form.value).subscribe(
       res => {},
-      err => {},
+      err => {
+        this.toastr.error(err.errror);
+      },
       () => {
         this.toastr.success('Contact edited Successfully!');
+        this.router.navigateByUrl('/contacts');
       }
     );
   }

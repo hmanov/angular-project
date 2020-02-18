@@ -5,6 +5,13 @@
   <button class="create" routerLink="/contacts/create">
     Create Contact
   </button>
+  <input
+    type="text"
+    class="search"
+    (keyup)="s(search.value)"
+    #search
+    placeholder="Search Contact..."
+  />
   <div class="contactWrapper">
     <app-contact
       #id

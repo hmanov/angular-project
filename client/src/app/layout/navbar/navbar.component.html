@@ -12,19 +12,15 @@
     <div></div>
   </a>
 
-  <ul
-    class="nav"
-    [ngClass]="{ 'nav-show': collapse, 'nav-hide': !collapse }"
-    #nav
-  >
+  <ul class="nav" [ngClass]="{ 'nav-show': collapse, 'nav-hide': !collapse }" #nav>
+    <li class="nav-item" (click)="toggleNavbarMenu()">
+      <a routerLink="/">Home</a>
+    </li>
     <li class="nav-item" *ngIf="user" (click)="toggleNavbarMenu()">
-      <a>Hello, {{ user.name }}!</a>
+      <a routerLink="/profile">Hello, {{ user.name }}!</a>
     </li>
     <li class="nav-item" *ngIf="user" (click)="toggleNavbarMenu()">
       <a routerLink="/contacts">My Contacts</a>
-    </li>
-    <li class="nav-item" (click)="toggleNavbarMenu()">
-      <a routerLink="/">Home</a>
     </li>
 
     <li *ngIf="!user" class="nav-item" (click)="toggleNavbarMenu()">
@@ -35,12 +31,7 @@
       <a routerLink="/auth/register">Register</a>
     </li>
 
-    <li
-      *ngIf="user"
-      class="nav-item"
-      (click)="toggleNavbarMenu()"
-      (click)="logout()"
-    >
+    <li *ngIf="user" class="nav-item" (click)="toggleNavbarMenu()" (click)="logout()">
       <a routerLink="/">Logout</a>
     </li>
   </ul>

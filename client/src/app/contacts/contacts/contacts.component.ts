@@ -10,13 +10,24 @@ export class ContactsComponent implements OnInit {
   constructor(private contactsService: ContactsService) {}
 
   contacts;
-
+  baseContacts;
   ngOnInit() {
     this.contactsService.getAllContacts().subscribe(e => {
       this.contacts = e;
+      this.baseContacts = e;
     });
   }
   del(contact) {
     this.contacts = this.contacts.filter(e => e !== contact);
+  }
+  s(value) {
+    this.contacts = this.baseContacts;
+    this.contacts = this.contacts.filter(e => {
+      for (let field of Object.values(e)) {
+        if (field.toString().includes(value)) {
+          return true;
+        }
+      }
+    });
   }
 }

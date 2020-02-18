@@ -11,9 +11,10 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './layout/spinner/spinner.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent, SpinnerComponent],
+  declarations: [AppComponent, NavbarComponent, HomeComponent, SpinnerComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
