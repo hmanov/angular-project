@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from '../contacts.service';
-import { FormControl, FormGroup, FormControlName, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Contact } from '../Contact';
 import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
@@ -24,6 +24,9 @@ export class DetailsComponent implements OnInit {
   edit: string = 'Save';
   id: string;
   validForm: boolean = true;
+  get name() {
+    return this.form.get('name');
+  }
   ngOnInit() {
     this.route.paramMap.subscribe(
       params => {
@@ -36,11 +39,12 @@ export class DetailsComponent implements OnInit {
           date = pipe.transform(date, 'dd-MM-yyyy hh:mm:ss');
 
           this.form = new FormGroup({
-            name: new FormControl(name),
+            name: new FormControl(name, [Validators.required, Validators.minLength(4)]),
             email: new FormControl(email),
             phone: new FormControl(phone),
             type: new FormControl(type)
           });
+
           // this.form.controls['save'].disable;
           this.form.valueChanges.subscribe(change => {
             this.validForm = false;

@@ -23,7 +23,7 @@ $lighter-color: #e1e2e2;
 
   form {
     width: 60%;
-    height: 50vh;
+    height: fit-content;
 
     border: 1px $secondary-color solid;
     border-radius: 10px;
@@ -48,7 +48,22 @@ $lighter-color: #e1e2e2;
       align-items: center;
       width: 80%;
       padding: 20px;
+      .alert {
+        padding: 5px 15px;
+        border: 1px solid $lighter-color;
+        display: block;
+        width: 100%;
+        margin-top: 10px;
 
+        background-color: red;
+        color: $lighter-color;
+        div {
+          display: block;
+
+          padding: 5px;
+          width: 100%;
+        }
+      }
       input {
         background-color: transparent;
         border: 1px #fb8122 solid;

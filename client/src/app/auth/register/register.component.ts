@@ -20,7 +20,6 @@ export class RegisterComponent implements OnInit {
     this.authService.register(data).subscribe(
       res => {
         this.cookieService.set('keeperToken', res['token']);
-        let user = {};
         this.authService.getUser().subscribe(res => {
           this.cookieService.set('keeperUser', JSON.stringify(res));
           this.router.navigateByUrl('/');

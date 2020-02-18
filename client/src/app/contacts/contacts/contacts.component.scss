@@ -57,6 +57,7 @@ $lighter-color: #e1e2e2;
     margin-top: 20px;
     padding: 15px;
     width: 30%;
+    font-size: 18px;
     border: 1px solid $secondary-color;
     background-color: rgba($primary-color, 0.3);
     color: $lighter-color;
@@ -66,6 +67,7 @@ $lighter-color: #e1e2e2;
     &::placeholder {
       color: $lighter-color;
       font-size: 18px;
+      text-align: center;
     }
   }
   min-height: 100%;
@@ -81,8 +83,14 @@ $lighter-color: #e1e2e2;
 }
 
 @media only screen and (max-width: 768px) {
-  .create {
+  .create,
+  .search {
     width: 90% !important;
     padding: 5px;
+  }
+  .search {
+    &::placeholder {
+      text-align: center;
+    }
   }
 }
