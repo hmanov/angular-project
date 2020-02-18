@@ -21,8 +21,7 @@ export class ContactsComponent implements OnInit {
     this.contacts = this.contacts.filter(e => e !== contact);
   }
   s(value) {
-    this.contacts = this.baseContacts;
-    this.contacts = this.contacts.filter(e => {
+    this.contacts = this.baseContacts.filter(e => {
       for (let field of Object.values(e)) {
         if (field.toString().includes(value)) {
           return true;
