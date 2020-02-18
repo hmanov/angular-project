@@ -30,11 +30,7 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
-  nameCheck(field) {
-    const classes = {
-      green: field.value.length > 3,
-      red: field.value.length <= 3
-    };
+ 
     return classes;
   }
   isFormValid(form) {

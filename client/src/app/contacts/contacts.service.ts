@@ -11,7 +11,7 @@ const url = 'http://localhost:3000/api/contacts';
 export class ContactsService {
   constructor(private http: HttpClient, private cookie: CookieService) {}
 
-  createContact(data: any) {
+  createContact(data: Contact) {
     return this.http.post(url, data);
   }
 
@@ -26,7 +26,7 @@ export class ContactsService {
   deleteContact(id: string) {
     return this.http.delete(`${url}/${id}`);
   }
-  editContact(id: string, data): Observable<Contact> {
+  editContact(id: string, data: Contact): Observable<Contact> {
     return this.http.put<Contact>(`${url}/${id}`, data);
   }
 }
