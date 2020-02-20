@@ -26,7 +26,10 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
+    const { name, email, password, repeatPassword } = req.body;
+    if (password !== repeatPassword) {
+      res.status(400).json({ msg: 'Passowrd doesnt match' });
+    }
 
     try {
       let user = await User.findOne({ email });

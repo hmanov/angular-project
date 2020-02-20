@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private cookieService: CookieService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {}
@@ -27,12 +29,11 @@ export class RegisterComponent implements OnInit {
       },
       err => {
         console.log(err);
+        this.toastr.error(err.error);
       }
     );
   }
- 
-    return classes;
-  }
+
   isFormValid(form) {
     const { name, email, password, repeatPassword } = form.value;
     if (name && email && password && repeatPassword) {

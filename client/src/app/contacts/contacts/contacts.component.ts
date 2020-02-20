@@ -20,6 +20,7 @@ export class ContactsComponent implements OnInit {
   del(contact) {
     this.contacts = this.contacts.filter(e => e !== contact);
   }
+
   s(value: string) {
     this.contacts = this.baseContacts.filter(e => {
       for (let field of Object.values(e)) {

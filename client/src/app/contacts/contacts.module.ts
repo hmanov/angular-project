@@ -9,6 +9,7 @@ import { DetailsComponent } from './details/details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ContactsInterceptor } from './contacts.interceptor';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 const contactsRoutes: Routes = [
   {
@@ -20,7 +21,11 @@ const contactsRoutes: Routes = [
         component: ContactsComponent
       },
       { path: 'create', component: CreateContactComponent },
-      { path: 'details/:id', component: DetailsComponent }
+      { path: 'details/:id', component: DetailsComponent },
+      {
+        path: '**',
+        component: NotFoundComponent
+      }
     ]
   }
 ];
