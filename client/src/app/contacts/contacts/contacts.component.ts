@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContactsService } from '../contacts.service';
 
 @Component({

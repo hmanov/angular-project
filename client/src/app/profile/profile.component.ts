@@ -31,4 +31,7 @@ export class ProfileComponent implements OnInit {
       this.contacts = res;
     });
   }
+  logout() {
+    this.authService.logout();
+  }
 }
