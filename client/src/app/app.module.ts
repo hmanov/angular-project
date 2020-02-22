@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +16,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactsGuard } from './guards/contacts.guard';
 import { ProfileGuard } from './guards/profile.guard';
 import { FooterComponent } from './layout/footer/footer.component';
+import { ContactsInterceptor } from './contacts/contacts.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,13 @@ import { FooterComponent } from './layout/footer/footer.component';
       timeOut: 3000
     })
   ],
-  providers: [CookieService, JwtHelperService, ContactsGuard, ProfileGuard],
+  providers: [
+    CookieService,
+    JwtHelperService,
+    ContactsGuard,
+    ProfileGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: ContactsInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
