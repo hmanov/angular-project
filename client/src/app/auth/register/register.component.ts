@@ -28,8 +28,7 @@ export class RegisterComponent implements OnInit {
         });
       },
       err => {
-        console.log(err);
-        this.toastr.error(err.error);
+        this.toastr.error(err.error.errors.map(e => e.msg).join(', '));
       }
     );
   }

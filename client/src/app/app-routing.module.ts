@@ -3,13 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ContactsGuard } from './guards/contacts.guard';
+import { ProfileGuard } from './guards/profile.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'logout', component: HomeComponent },
   {
     path: 'contacts',
-    loadChildren: () => import('./contacts/contacts.module').then(m => m.ContactsModule)
+    loadChildren: () => import('./contacts/contacts.module').then(m => m.ContactsModule),
+    canLoad: [ContactsGuard]
   },
   {
     path: 'auth',
@@ -17,7 +20,8 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [ProfileGuard]
   },
   {
     path: '**',

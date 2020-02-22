@@ -13,7 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './layout/spinner/spinner.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import { ContactsGuard } from './guards/contacts.guard';
+import { ProfileGuard } from './guards/profile.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     HttpClientModule,
     CommonModule,
     BrowserAnimationsModule,
@@ -39,7 +39,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
       timeOut: 3000
     })
   ],
-  providers: [CookieService, JwtHelperService],
+  providers: [CookieService, JwtHelperService, ContactsGuard, ProfileGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

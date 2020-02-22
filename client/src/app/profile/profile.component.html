@@ -1,0 +1,10 @@
+<div *ngIf="user">
+  <h2>{{ user.name }}</h2>
+  <h2>{{ user.email }}</h2>
+  <h2>{{ user.date | date: 'dd.MM.yyyy hh:mm:ss' }}</h2>
+  <div class="link-wrapper">
+    <a [routerLink]="['/contacts', 'details', contact._id]" *ngFor="let contact of contacts">{{
+      contact.name
+    }}</a>
+  </div>
+</div>

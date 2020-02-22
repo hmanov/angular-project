@@ -22,9 +22,7 @@ export class CreateContactComponent implements OnInit {
         this.router.navigateByUrl('/contacts');
       },
       err => {
-        console.log(err);
-        console.log(err);
-        this.toastr.error(`You must be signed in to create contacts`);
+        this.toastr.error(err.error.errors[0].msg);
       },
       () => {
         this.toastr.success('Contact Created successfully!');

@@ -45,7 +45,6 @@ export class DetailsComponent implements OnInit {
             type: new FormControl(type)
           });
 
-          // this.form.controls['save'].disable;
           this.form.valueChanges.subscribe(change => {
             this.validForm = false;
           });

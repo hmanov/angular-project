@@ -6,22 +6,10 @@
   <hr />
 
   <p>
-    <button
-      *ngIf="!user"
-      type="button"
-      class="btn-lg"
-      routerLink="/auth/register"
-      role="button"
-    >
-      Try NOW
+    <button *ngIf="!user" type="button" class="btn-lg" routerLink="/auth/register" role="button">
+      Try Now!
     </button>
-    <button
-      *ngIf="user"
-      type="button"
-      class="btn-lg"
-      routerLink="/contacts/create"
-      role="button"
-    >
+    <button *ngIf="user" type="button" class="btn-lg" routerLink="/contacts/create" role="button">
       Create Contact
     </button>
   </p>
