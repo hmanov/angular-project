@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactsGuard } from './guards/contacts.guard';
 import { ProfileGuard } from './guards/profile.guard';
+import { FooterComponent } from './layout/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { ProfileGuard } from './guards/profile.guard';
     HomeComponent,
     SpinnerComponent,
     ProfileComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
