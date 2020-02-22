@@ -22,6 +22,9 @@ $lighter-color: #e1e2e2;
   align-items: center;
 
   form {
+    h1 {
+      color: $lighter-color;
+    }
     width: 60%;
     height: fit-content;
 

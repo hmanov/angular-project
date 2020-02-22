@@ -1,6 +1,6 @@
 <div class="container" *ngIf="contactDetails">
-  <h1>EDIT YOUR CONTACT</h1>
   <form [formGroup]="form" (ngSubmit)="editContact()">
+    <h1>EDIT YOUR CONTACT</h1>
     <div class="form-group">
       <input type="text" class="form-control" value="" formControlName="name" />
       <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
